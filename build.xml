@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="fibu-trainer">
+
+	<target name="prepare">
+		<property environment="env" />
+		<delete includeemptydirs="true">
+			<fileset dir="0_TMP" includes="*"/>
+			<fileset dir="0_OUT" includes="*" />
+		</delete>
+	</target>
+
+	<target name="html" depends="prepare" unless="done">
+		<delete includeemptydirs="true">
+			<fileset dir="${env.local_www_dir}/${ant.project.name}" includes="*" />
+		</delete>
+		<copy todir="0_TMP" >
+			<fileset dir=".">
+				<include name="*.md" />
+			</fileset>
+			<fileset dir=".">
+				<include name="*.html" />
+			</fileset>
+			<fileset dir=".">
+				<include name="*.lua" />
+			</fileset>
+			<fileset dir=".">
+				<include name="*.yaml" />
+			</fileset>
+			<fileset dir="scripts/">
+				<include name="*.js" />
+			</fileset>
+			<fileset dir="formate/">
+				<include name="*.css" />
+			</fileset>
+		</copy>
+		<!-- <exec executable="upp" dir="0_TMP/">
+			<arg line="-l html5.lua -o ${ant.project.name}.js ${ant.project.name}.js" />
+		</exec> -->
+		<echo message="upp: start.md"/>
+		<exec executable="upp" dir="0_TMP/">
+			<arg line="-l html5.lua -o start.md start.md" />
+		</exec>
+		<echo message="pandoc: start.md"/>
+		<exec executable="pandoc" dir="0_TMP/">
+			<arg line="start.md -t html -o start.html" />
+		</exec>
+		<echo message="upp: impressum.md"/>
+		<exec executable="upp" dir="0_TMP/">
+			<arg line="-l html5.lua -o impressum.md impressum.md" />
+		</exec>
+		<echo message="pandoc: impressum.md"/>
+		<exec executable="pandoc" dir="0_TMP/">
+			<arg line="impressum.md -t html -o impressum.html" />
+		</exec>
+		<echo message="upp: index"/>
+		<exec executable="upp"  dir="0_TMP/">
+			<arg line="-l html5.lua -o index.html ${ant.project.name}-index.html" />
+		</exec>
+		<copy file="dummy.html" tofile="${env.local_www_dir}/${ant.project.name}/dummy.html" />
+		<copy file="0_TMP/index.html" tofile="${env.local_www_dir}/${ant.project.name}/index.html" />
+		<copy todir="${env.local_www_dir}/${ant.project.name}/formate/">
+			<fileset dir="0_TMP" includes="*.css" />
+		</copy>
+		<copy todir="${env.local_www_dir}/${ant.project.name}/scripts/">
+			<fileset dir="0_TMP" includes="*.js" />
+		</copy>
+		<copy todir="${env.local_www_dir}/${ant.project.name}/bilder">
+			<fileset dir="bilder" includes="*.*" />
+		</copy>
+	        <property name="done" value="done" />
+	</target>
+</project>

@@ -1,0 +1,14 @@
+---
+firma: "Test-OHG"
+vortrag: "Vorträge"
+kontenrahmen: "SKR03"
+jahr: 2021
+startmonat: 5
+zahlmonate: 3 
+abschluss: false
+anzahlbelege:
+  - 21
+  - 15
+  - 13
+
+

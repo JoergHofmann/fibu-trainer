@@ -1,0 +1,23 @@
+---
+diese_firma:
+    name: "pecunia-non-olet.com"
+    strasse: "Ab Schloßpark 78"
+    plz: 65203
+    ort: "Wiesbaden"
+    tel: "+49(611)507411"
+    fax: "+49(611)94939032"
+    mobil: "+49(176)27810343"
+    mail: "info@pecunia-non-olet.com"
+    www: "http://pecunia-non-olet.com"
+    logo: "logo.png"
+
+autor:
+    nachname: "Hofmann"
+    vorname: "Jörg"
+    strasse: "Am Schloßpark 78"
+    plz: 65203
+    ort: "Wiesbaden"
+    tel: "+49(611)507411"
+    fax: "+49(611)94939032"
+    mobil: "+49(176)27810343"
+    mail: "joerg.hofmann@jho-home.de"
