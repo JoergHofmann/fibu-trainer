@@ -15,7 +15,7 @@
 
   </head>
   <body>
-     <h1 id="titelzeile">Kontieren üben: Die $(Firma)</h1>
+     <h1 id="titelzeile">Kontieren üben</h1>
      <nav id="MainMenu">
 	 <ul>
 	     <li id = "mStart" class="mAktiv"> Start </li>
@@ -27,7 +27,8 @@
 	     <li id = "mHelp"> ? </li>
 	 </ul>
      </nav>
-     <img src="bilder/$(DieseFirmaLogo)" id = "logo">
+     <div id="logo"><img id="logo_image" src="bilder/$(DieseFirmaLogo)"><p>$(DieseFirmaName)<br />$(DieseFirmaStrasse)<br />$(DieseFirmaPLZ)&nbsp;$(DieseFirmaOrt)</p></div>
+     
      <img id="titelbild" class="rechts" src="bilder/titelbild.png">
      
      <section id="start" class="links">
@@ -46,7 +47,7 @@
 		    </iframe>
 
     <footer>
-	<p>&copy; $(DieseFirmaName), $(Monat[heute.month].MMMM) $(heute.year)<br />
+	<p>&copy;&nbsp; $(AutorVorname)&nbsp;$(AutorNachname),&nbsp;$(Monat[heute.month].MMMM)&nbsp;$(heute.year)<br />
 	GIT: $(GITAbrHash "")</p>
 </footer>
   </body>
