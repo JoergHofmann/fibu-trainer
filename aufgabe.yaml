@@ -3,9 +3,9 @@ firma: "Test-OHG"
 vortrag: "Vorträge"
 kontenrahmen: "SKR03"
 jahr: 2021
-startmonat: 5
-zahlmonate: 3 
-abschluss: false
+startmonat: 1
+zahlmonate: 12 
+abschluss: true
 anzahlbelege:
   - 21
   - 15

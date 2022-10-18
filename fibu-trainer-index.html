@@ -1,13 +1,11 @@
 :(MainInit "")
-:(AufgabeInit "")
-:(require "fibu-trainer")
 
 <!doctype html>
 <html lang="de">
   <head>
     <meta charset="utf-8">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <title>$(Firma)</title>
+    <title>Kontieren üben</title>
     <!-- gegebenenfalls andere Elemente im Kopfbereich -->
     <script src="scripts/loesung.js"></script>
     <script src="scripts/fibu-trainer.js"></script>
@@ -19,15 +17,16 @@
      <nav id="MainMenu">
 	 <ul>
 	     <li id = "mStart" class="mAktiv"> Start </li>
-	     <li id = "mFirma"> Firma </li>
-	     <li id = "mVortrag"> $(vortrag) </li>
-	     $(MakeMainMenu "")
-	     <li id = "mErgebnis"> Wie war ich? </li>
+	     <li id = "mListe"> Meine Aufgaben </li>
 	     <li id = "mImpressum"> Impressum </li>
-	     <li id = "mHelp"> ? </li>
 	 </ul>
      </nav>
-     <div id="logo"><img id="logo_image" src="bilder/$(DieseFirmaLogo)"><p>$(DieseFirmaName)<br />$(DieseFirmaStrasse)<br />$(DieseFirmaPLZ)&nbsp;$(DieseFirmaOrt)</p></div>
+     <div id="logo">
+	 <img id="logo_image" src="bilder/$(DieseFirmaLogo)">
+	 <p>$(DieseFirmaName)<br />
+	 $(DieseFirmaStrasse)<br />
+	 $(DieseFirmaPLZ)&nbsp;$(DieseFirmaOrt)</p>
+     </div>
      
      <img id="titelbild" class="rechts" src="bilder/titelbild.png">
      
@@ -39,17 +38,21 @@
 	 $(include "impressum.html")
      </section>
     
-		    <iframe
-			    id="BelegFrame"
-			    style="grid-column: 1 / 4; grid-row:    3 / 4; width: 100%; height: 100%; display: none"
-			    src="dummy.html" >
-			    <p>Ihr Browser kann leider keine eingebetteten Frames anzeigen!</p>
-		    </iframe>
-
-    <footer>
-	<p>&copy;&nbsp; $(AutorVorname)&nbsp;$(AutorNachname),&nbsp;$(Monat[heute.month].MMMM)&nbsp;$(heute.year)<br />
-	GIT: $(GITAbrHash "")</p>
-</footer>
+     <section id="liste" class="links" style="display: none">
+	 $(include "liste.html")
+     </section>
+    
+     <iframe
+         id="BelegFrame"
+	 style="grid-column: 1 / 4; grid-row:    3 / 4; width: 100%; height: 100%; display: none"
+	 src="dummy.html" >
+	 <p>Ihr Browser kann leider keine eingebetteten Frames anzeigen!</p>
+     </iframe>
+    
+     <footer>
+	 <p>&copy;&nbsp; $(AutorVorname)&nbsp;$(AutorNachname),&nbsp;$(Monat[heute.month].MMMM)&nbsp;$(heute.year)<br />
+	 GIT: $(GITAbrHash "")</p>
+     </footer>
   </body>
 </html>
 

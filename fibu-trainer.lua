@@ -1,13 +1,15 @@
-function MakeMainMenu ()
-	local MainMenu = ""
+function MakeInnerMenu ()
+	local InnerMenu = '<nav class="InnerMenu"><ul><li id="iFirma"> Firma </li><li id="iVortrag"> $(vortrag) </li>'
 	for j=1, ZahlMonate, 1 do
 		i = StartMonat + j - 1
-		MainMenu = MainMenu .. '<li id = "mM' .. j .. '">' ..  Monat[i].MMM .. '</li>\n'
+		InnerMenu = InnerMenu .. '<li id = "iM' .. j .. '">' ..  Monat[i].MMM .. '</li>'
 	end
 	if abschluss then
-		MainMenu = MainMenu .. '<li id = "mAbschluss"> Abschluß </li>'
+		InnerMenu = InnerMenu .. '<li id = "iAbschluss">Abschluß</li>'
 	end
-	return MainMenu
+        InnerMenu = InnerMenu .. '<li id = "iHelp"> Hä? </li></ul></nav>'
+	     
+	return InnerMenu
 end
 
 

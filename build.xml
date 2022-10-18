@@ -34,9 +34,9 @@
 				<include name="*.css" />
 			</fileset>
 		</copy>
-		<!-- <exec executable="upp" dir="0_TMP/">
+		<exec executable="upp" dir="0_TMP/">
 			<arg line="-l html5.lua -o ${ant.project.name}.js ${ant.project.name}.js" />
-		</exec> -->
+		</exec>
 		<echo message="upp: start.md"/>
 		<exec executable="upp" dir="0_TMP/">
 			<arg line="-l html5.lua -o start.md start.md" />
@@ -52,6 +52,10 @@
 		<echo message="pandoc: impressum.md"/>
 		<exec executable="pandoc" dir="0_TMP/">
 			<arg line="impressum.md -t html -o impressum.html" />
+		</exec>
+		<echo message="upp: liste.html"/>
+		<exec executable="upp" dir="0_TMP/">
+			<arg line="-l html5.lua -o liste.html liste.html" />
 		</exec>
 		<echo message="upp: index"/>
 		<exec executable="upp"  dir="0_TMP/">
