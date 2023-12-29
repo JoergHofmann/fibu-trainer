@@ -1,6 +1,3 @@
-:(AufgabeInit "")
-:(require "fibu-trainer")
-
 // Konstanten ========================================================================================= {**
 //
 var	Tag = [];
@@ -106,52 +103,8 @@ var	Tag = [];
 
 //================== Variablen ========================================================================================== {**
 //
-let SollSumme = 0,
-    HabenSumme = 0,
-    index = 0,
-    kr = false,
-    MenuAktiv = "mStart",
-    mMenuAktiv = "mmBelege",
-    abschnitt = "belege",
-    Jahr = 2021,
-    ZahlMonate = 3,
-    ErsterMonat = 5;
-
-
-   var MaxPunkte = new Array ();
-       MaxPunkte[0] = 19; 
-       MaxPunkte[1] = new Array (); 
-       MaxPunkte[2] = new Array (); 
-       MaxPunkte[3] = new Array (); 
-       MaxPunkte[1]["belege"] = 21; 
-       MaxPunkte[1]["kasse"] = 7; 
-       MaxPunkte[1]["bank1"] = 9; 
-       MaxPunkte[1]["bank2"] = 3; 
-       MaxPunkte[1]["summe"] = MaxPunkte[1]["belege"] + MaxPunkte[1]["kasse"] + MaxPunkte[1]["bank1"] + MaxPunkte[1]["bank2"];
-       MaxPunkte[2]["belege"] = 14;
-       MaxPunkte[2]["kasse"] = 6;
-       MaxPunkte[2]["bank1"] = 18;
-       MaxPunkte[2]["bank2"] = 7;
-       MaxPunkte[2]["summe"] = MaxPunkte[2]["belege"] + MaxPunkte[2]["kasse"] + MaxPunkte[2]["bank1"] + MaxPunkte[2]["bank2"];
-       MaxPunkte[3]["belege"] = 11;
-       MaxPunkte[3]["kasse"] = 8;
-       MaxPunkte[3]["bank1"] = 11;
-       MaxPunkte[3]["bank2"] = 6;
-       MaxPunkte[3]["summe"] = MaxPunkte[3]["belege"] + MaxPunkte[3]["kasse"] + MaxPunkte[3]["bank1"] + MaxPunkte[3]["bank2"];
-
-       MaxSumme = MaxPunkte[0] + MaxPunkte[1]["summe"] + MaxPunkte[2]["summe"] + MaxPunkte[3]["summe"];
-
-
-   var ErreichtePunkte = new Array ();
-       ErreichtePunkte[0] = 0;
-
-       ErreichteSumme = 0;
-
-   var AnzahlZeilen = 10,
-       AnzahlSpalten = 3;
-
-   let BelegIdx = new Array (),
-       AnzahlBelege = new Array ();
+   let MenuAktiv = "mStart",
+       kr = false;
 
 
 // **}
@@ -160,16 +113,6 @@ let SollSumme = 0,
 //================== Funktionen ========================================================================================= {**
 
 function init () { // {**
-	// Variable vorbelegen
-	for (j=1; j<= ZahlMonate; j++) {
-		ErreichtePunkte[j] = new Array ();
-		ErreichtePunkte[j]["belege"] = 0;
-		ErreichtePunkte[j]["kasse"] = 0;
-		ErreichtePunkte[j]["bank1"] = 0;
-		ErreichtePunkte[j]["bank2"] = 0;
-	}
-	// Kontenrahmen zeigen/nicht zeigen
-	let kr = false;
 	// Hauptmenü einrichten
 	document.getElementById("mStart").addEventListener("click", mStart);
 	document.getElementById("mImpressum").addEventListener("click", mImpressum);
@@ -179,7 +122,7 @@ function init () { // {**
 //        document.getElementById("HideKr").addEventListener("click", KontenrahmenEinAus);
 	// eventlistener für die einzelnen Monate
 //	document.getElementById("mErgebnis").addEventListener("click", mErgebnis);
-        MenuAktiv = "mStart";
+        // MenuAktiv = "mStart";
     }
 // **}
 

@@ -6,17 +6,15 @@
 		<property environment="env" />
 		<delete includeemptydirs="true">
 			<fileset dir="0_TMP" includes="*"/>
-			<fileset dir="0_OUT" includes="*" />
+			<fileset dir="0_OUT" />
 		</delete>
 	</target>
 
 	<target name="html" depends="prepare" unless="done">
-		<delete includeemptydirs="true">
-			<fileset dir="${env.local_www_dir}/${ant.project.name}" includes="*" />
-		</delete>
 		<copy todir="0_TMP" >
 			<fileset dir=".">
 				<include name="*.md" />
+			        <exclude name="README.md" />
 			</fileset>
 			<fileset dir=".">
 				<include name="*.html" />
@@ -27,50 +25,48 @@
 			<fileset dir=".">
 				<include name="*.yaml" />
 			</fileset>
-			<fileset dir="scripts/">
-				<include name="*.js" />
-			</fileset>
-			<fileset dir="formate/">
-				<include name="*.css" />
-			</fileset>
 		</copy>
-		<exec executable="upp" dir="0_TMP/">
-			<arg line="-l html5.lua -o ${ant.project.name}.js ${ant.project.name}.js" />
+	        <apply executable="ypp" dir="0_TMP" dest="0_TMP" logError="true">
+		   <arg line="-l html5.lua" />
+		   <srcfile />
+		   <arg line="-o " />
+		   <targetfile />
+	  	   <fileset dir="0_TMP">
+		 	   <include name="*.md" />
+		   </fileset>
+		   <mapper type="glob" from="*.md" to="*.md" />
+	        </apply>
+	        <apply executable="pandoc" dir="0_TMP" dest="0_TMP" logError="true">
+		   <srcfile />
+		   <arg line="-t html -o " />
+		   <targetfile />
+	  	   <fileset dir="0_TMP">
+		 	   <include name="*.md" />
+		   </fileset>
+		   <mapper type="glob" from="*.md" to="*.html" />
+	        </apply>
+		<exec executable="ypp" dir="0_TMP">
+			<arg line="-l html5.lua index.html -o index.html" />
 		</exec>
-		<echo message="upp: start.md"/>
-		<exec executable="upp" dir="0_TMP/">
-			<arg line="-l html5.lua -o start.md start.md" />
-		</exec>
-		<echo message="pandoc: start.md"/>
-		<exec executable="pandoc" dir="0_TMP/">
-			<arg line="start.md -t html -o start.html" />
-		</exec>
-		<echo message="upp: impressum.md"/>
-		<exec executable="upp" dir="0_TMP/">
-			<arg line="-l html5.lua -o impressum.md impressum.md" />
-		</exec>
-		<echo message="pandoc: impressum.md"/>
-		<exec executable="pandoc" dir="0_TMP/">
-			<arg line="impressum.md -t html -o impressum.html" />
-		</exec>
-		<echo message="upp: liste.html"/>
-		<exec executable="upp" dir="0_TMP/">
-			<arg line="-l html5.lua -o liste.html liste.html" />
-		</exec>
-		<echo message="upp: index"/>
-		<exec executable="upp"  dir="0_TMP/">
-			<arg line="-l html5.lua -o index.html ${ant.project.name}-index.html" />
-		</exec>
-		<copy file="dummy.html" tofile="${env.local_www_dir}/${ant.project.name}/dummy.html" />
-		<copy file="0_TMP/index.html" tofile="${env.local_www_dir}/${ant.project.name}/index.html" />
-		<copy todir="${env.local_www_dir}/${ant.project.name}/formate/">
-			<fileset dir="0_TMP" includes="*.css" />
+		<copy todir="0_OUT">
+			<fileset dir="0_TMP">
+                           <include name="*.html" />
+                           <exclude name="start.html" />
+                           <exclude name="impressum.html" />
+                           <exclude name="liste.html" />
+                       </fileset>
 		</copy>
-		<copy todir="${env.local_www_dir}/${ant.project.name}/scripts/">
-			<fileset dir="0_TMP" includes="*.js" />
+		<copy todir="0_OUT">
+			<fileset dir="bilder" includes="*.ico" />
 		</copy>
-		<copy todir="${env.local_www_dir}/${ant.project.name}/bilder">
+		<copy todir="0_OUT/bilder">
 			<fileset dir="bilder" includes="*.*" />
+		</copy>
+		<copy todir="0_OUT/scripts">
+			<fileset dir="scripts" includes="*.js" />
+		</copy>
+		<copy todir="0_OUT/css">
+			<fileset dir="css" includes="*.css" />
 		</copy>
 	        <property name="done" value="done" />
 	</target>

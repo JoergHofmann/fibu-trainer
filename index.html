@@ -1,5 +1,3 @@
-:(MainInit "")
-
 <!doctype html>
 <html lang="de">
   <head>
@@ -7,39 +5,35 @@
     <meta name=viewport content="width=device-width, initial-scale=1">
     <title>Kontieren üben</title>
     <!-- gegebenenfalls andere Elemente im Kopfbereich -->
-    <script src="scripts/loesung.js"></script>
+    <!-- <script src="scripts/loesung.js"></script> -->
     <script src="scripts/fibu-trainer.js"></script>
-    <link rel="stylesheet" href="formate/fibu-trainer.css" />
+    <link rel="stylesheet" href="css/fibu-trainer.css" />
 
   </head>
   <body>
-     <h1 id="titelzeile">Kontieren üben</h1>
-     <nav id="MainMenu">
-	 <ul>
-	     <li id = "mStart" class="mAktiv"> Start </li>
-	     <li id = "mListe"> Meine Aufgaben </li>
-	     <li id = "mImpressum"> Impressum </li>
-	 </ul>
-     </nav>
-     <div id="logo">
-	 <img id="logo_image" src="bilder/$(DieseFirmaLogo)">
-	 <p>$(DieseFirmaName)<br />
-	 $(DieseFirmaStrasse)<br />
-	 $(DieseFirmaPLZ)&nbsp;$(DieseFirmaOrt)</p>
-     </div>
+     <header>
+         <nav id="MainMenu">
+             <ul>
+	         <li id = "mStart" class="mAktiv"> Start </li>
+	         <li id = "mListe">Aufgaben </li>
+	         <li id = "mImpressum"> Impressum </li>
+	         <li id = "mHelp">[ Hä? ]</li>
+	     </ul>
+         </nav>
+     </header>
      
      <img id="titelbild" class="rechts" src="bilder/titelbild.png">
      
      <section id="start" class="links">
-	 $(include "start.html")
+	 @(include "start.html")
      </section>
     
      <section id="impressum" class="links" style="display: none">
-	 $(include "impressum.html")
+	 @(include "impressum.html")
      </section>
     
      <section id="liste" class="links" style="display: none">
-	 $(include "liste.html")
+	 @(include "liste.html")
      </section>
     
      <iframe
@@ -50,8 +44,7 @@
      </iframe>
     
      <footer>
-	 <p>&copy;&nbsp; $(AutorVorname)&nbsp;$(AutorNachname),&nbsp;$(Monat[heute.month].MMMM)&nbsp;$(heute.year)<br />
-	 GIT: $(GITAbrHash "")</p>
+	 <p>&copy;&nbsp; @(Autor.name),&nbsp;@(Monat[heute.month].MMMM)&nbsp;@(heute.year), Git: @(GetShortGITHash "")</p>
      </footer>
   </body>
 </html>

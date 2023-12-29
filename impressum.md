@@ -1,17 +1,15 @@
-:(MainInit "")
-
 # Impressum
 
-$(AutorVorname) $(AutorNachname)$(br)
-$(DieseFirmaStrasse)$(br)
-$(DieseFirmaPLZ) $(DieseFirmaOrt)
+@(Firma.name)@(br)
+Inh: @(Autor.vorname) @(Autor.nachname)@(br)
+@(Firma.strasse)@(br)
+@(Firma.plz) @(Firma.ort)
 
-Tel: $(DieseFirmaTel)$(br)
-Fax: $(DieseFirmaFax)$(br)
-Mobil: $(DieseFirmaMobil)
+Tel: @(Firma.tel)@(br)
+Fax: @(Firma.fax)@(br)
+Mail: @(Firma.mail)@(br)
 
-$(DieseFirmaMail)$(br)
-$(DieseFirmaWWW)$(br)
+@(Firma.www)@(br)
 
 
 # Und wer bin ich
